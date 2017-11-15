@@ -3,6 +3,13 @@ const scrapeIt = require('scrape-it');
 const jsonfile = require('jsonfile');
 const fs = require('fs');
 
+jsonfile.readFile("links.json", function (err, obj) {
+    console.dir(err || 'success');
+    scraperloop(obj.articles, 0);
+
+})
+
+
 
 let options = {
     url: 'http://www.imdb.com/title/tt0111161/fullcredits?ref_=tt_ov_st_sm',
@@ -29,7 +36,7 @@ function callback(error, response, body) {
               page.articles.splice(i, 1);
             }
         }
-        jsonfile.writeFile('characters.json', page, { spaces: 2 }, ()=>{
+        jsonfile.writeFile('characters.json', page, { spaces: 2 },{'flags': 'w'}, ()=>{
 
         });
 
@@ -37,6 +44,13 @@ function callback(error, response, body) {
 
 }
 
+function scraperloop(arr, i) {
+    setTimeout(function () {
+        var url = arr[i].url;
+        request(url, callback)
+        scraperloop(arr, ++i)
+    }, 2000)
+}
 
 
-  request(options,callback);
+//   request(options,callback);
