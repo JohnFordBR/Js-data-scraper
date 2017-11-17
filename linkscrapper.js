@@ -36,7 +36,7 @@ function callback(error, response, body) {
               page.articles.splice(i, 1);
             }
         }
-        jsonfile.writeFile('links.json', page, { spaces: 2 }, (err)=>{
+        jsonfile.writeFile('links.json', page, { spaces: 2 } (err)=>{
           if (err) throw err;
         });
 

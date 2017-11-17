@@ -2,7 +2,7 @@ const request = require('request');
 const scrapeIt = require('scrape-it');
 const jsonfile = require('jsonfile');
 const fs = require('fs');
-
+let movobj= {articles:[]};
 jsonfile.readFile("links.json", function (err, obj) {
     console.dir(err || 'success');
     scraperloop(obj.articles, 0);
@@ -31,14 +31,11 @@ function callback(error, response, body) {
         let page = scrapeIt.scrapeHTML(body, data);
         for(let i in page.articles)
         {
-          if(page.articles[i].title=="")
-            {
-              page.articles.splice(i, 1);
+          if(page.articles[i].title!="")
+            {                                 
+              movobj.articles=movobj.articles.concat(page.articles[i]);
             }
         }
-        jsonfile.writeFile('characters.json', page, { spaces: 2 },{'flags': 'w'}, ()=>{
-
-        });
 
     }
 
@@ -47,8 +44,14 @@ function callback(error, response, body) {
 function scraperloop(arr, i) {
     setTimeout(function () {
         var url = arr[i].url;
-        request(url, callback)
-        scraperloop(arr, ++i)
+        request(url, callback);
+        scraperloop(arr, ++i);
+        if(i==250)
+        {
+            jsonfile.writeFile('characters.json', movobj, { spaces: 2 },{flag: 'a'},()=>{
+            console.error(err);
+            });
+        }
     }, 2000)
 }
 
