@@ -5,16 +5,9 @@ const fs = require('fs');
 let movobj= {articles:[]};
 jsonfile.readFile("links.json", function (err, obj) {
     console.dir(err || 'success');
-    scraperloop(obj.articles, 0);
+    scraperloop(obj.articles, 200);
 
 })
-
-
-
-let options = {
-    url: 'http://www.imdb.com/title/tt0111161/fullcredits?ref_=tt_ov_st_sm',
-
-};
 
 let data = {
     // Fetch the articles
@@ -32,7 +25,7 @@ function callback(error, response, body) {
         for(let i in page.articles)
         {
           if(page.articles[i].title!="")
-            {                                 
+            {
               movobj.articles=movobj.articles.concat(page.articles[i]);
             }
         }
@@ -48,9 +41,10 @@ function scraperloop(arr, i) {
         scraperloop(arr, ++i);
         if(i==250)
         {
-            jsonfile.writeFile('characters.json', movobj, { spaces: 2 },{flag: 'a'},()=>{
+            jsonfile.writeFile('print.json', movobj, { spaces: 2 },{flag: 'a'},()=>{
             console.error(err);
             });
+            return "norm";
         }
     }, 2000)
 }
