@@ -1,6 +1,6 @@
 let $ = go.GraphObject.make;
-let acts = require("../bestchar.js");
-console.log(acts.stararr);
+// let acts = require("../bestchar.js");
+// console.log(acts.stararr);
 let myDiagram =
 $(go.Diagram, "myDiagramDiv",
 {
