@@ -1,6 +1,7 @@
 const jsonfile = require('jsonfile');
 let chararr = [];
 let stararr = [];
+let sendarr = [];
 jsonfile.readFile("characters.json", function (err, obj)
     {
         for(let i in obj.articles)
@@ -31,16 +32,20 @@ function getbestactorarr(arr)
             }
         }
         stararr.sort(function(a,b){
-          return a[1] - b[1];
+          return  b[1] - a[1];
         });
     }
 function readstararr()
   {
     for(let i in stararr)
     {
-      if(stararr[i][1]>=3)
+      if(stararr[i][1] == 1)
       {
-        console.log(stararr[i]);
+          sendarr.push( { key: stararr[i][1],name: stararr[i][0]});
+      }
+      else
+      {
+          sendarr.push( { key: stararr[i][1], parent: `${stararr[i][1]-1}`,name: stararr[i][0]});
       }
     }
   }
