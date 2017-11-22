@@ -3,4 +3,5 @@
     width: 100vw;
     height: 100vw;
     background-color: #DAE4E4;
+    overflow: hidden;
   }
