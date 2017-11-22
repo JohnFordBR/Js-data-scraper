@@ -32,7 +32,7 @@ function getbestactorarr(arr) {
 function readstararr() {
     for (let i in stararr) {
         if (stararr[i][1] == 1) {
-            sendarr.push({ key: stararr[i][1], name: stararr[i][0] });
+            sendarr.push({ key: stararr[i][1], parent: 1, name: stararr[i][0] });
         }
         else {
             sendarr.push({ key: stararr[i][1], parent: `${stararr[i][1] - 1}`, name: stararr[i][0] });
