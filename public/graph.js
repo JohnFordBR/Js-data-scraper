@@ -15,7 +15,7 @@ function resp() {
                     initialContentAlignment: go.Spot.Center, // center Diagram contents
                     "undoManager.isEnabled": true,
                       layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
-                { angle: 90, layerSpacing: 35 }) // enable Ctrl-Z to undo and Ctrl-Y to redo
+                { angle: 90, layerSpacing: 500 }) // enable Ctrl-Z to undo and Ctrl-Y to redo
                 });
 
             myDiagram.nodeTemplate =
@@ -38,9 +38,9 @@ function resp() {
                 );
 
             let model = $(go.TreeModel);
-            
+
             model.nodeDataArray = jsonData;
-               
+
             myDiagram.model = model;
         }
     });
