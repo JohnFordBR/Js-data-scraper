@@ -5,3 +5,7 @@
     background-color: #DAE4E4;
     overflow: hidden;
   }
+body
+  {
+    overflow: hidden;
+  }

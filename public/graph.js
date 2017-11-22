@@ -8,18 +8,16 @@ function resp() {
             console.log(typeof jsonData)
 
             let $ = go.GraphObject.make;
-            // const a = require('./bestchar.js');
-            // console.log(a);
             let myDiagram = $(go.Diagram, "myDiagramDiv",
                 {
                     initialContentAlignment: go.Spot.Center, // center Diagram contents
                     "undoManager.isEnabled": true,
                       layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
-                { angle: 90, layerSpacing: 500 }) // enable Ctrl-Z to undo and Ctrl-Y to redo
+                { angle: 270, layerSpacing: 1000 }) // enable Ctrl-Z to undo and Ctrl-Y to redo
                 });
 
             myDiagram.nodeTemplate =
-                $(go.Node, "Horizontal",
+                $(go.Node, "Vertical",
                     // the entire node will have a light-blue background
                     { background: "#c4dbc1" },
                     // $(go.Picture,
@@ -30,15 +28,16 @@ function resp() {
                     //   // Picture.source is data bound to the "source" attribute of the model data
                     //   new go.Binding("source")),
                     $(go.TextBlock,
-                        "Default Text",  // the initial value for TextBlock.text
+                          // the initial value for TextBlock.text
                         // some room around the text, a larger font, and a white stroke:
                         { margin: 12, stroke: "white", font: "bold 16px sans-serif" },
                         // TextBlock.text is data bound to the "name" attribute of the model data
                         new go.Binding("text", "name"))
                 );
 
-            let model = $(go.TreeModel);
 
+            let model = $(go.TreeModel);
+            console.log(jsonData);
             model.nodeDataArray = jsonData;
 
             myDiagram.model = model;
@@ -46,7 +45,5 @@ function resp() {
     });
 }
 
-// $(window).resize(function () {
-//     resp();
-// });
+
 resp();
