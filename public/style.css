@@ -9,3 +9,7 @@ body
   {
     overflow: hidden;
   }
+h1
+  {
+    font-size: 300px;
+  }

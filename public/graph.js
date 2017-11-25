@@ -13,13 +13,13 @@ function resp() {
                     initialContentAlignment: go.Spot.Center, // center Diagram contents
                     "undoManager.isEnabled": true,
                       layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
-                { angle: 270, layerSpacing: 1000 }) // enable Ctrl-Z to undo and Ctrl-Y to redo
+                { angle: 180, layerSpacing: 1000 }) // enable Ctrl-Z to undo and Ctrl-Y to redo
                 });
 
             myDiagram.nodeTemplate =
                 $(go.Node, "Vertical",
                     // the entire node will have a light-blue background
-                    { background: "#c4dbc1" },
+                    { background: "#ffff00" },
                     // $(go.Picture,
                     //   // Pictures should normally have an explicit width and height.
                     //   // This picture has a red background, only visible when there is no source set
