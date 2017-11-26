@@ -1,4 +1,5 @@
 
+document.body.style.zoom="100%"
 function resp() {
 
     $.ajax({
@@ -19,7 +20,7 @@ function resp() {
             myDiagram.nodeTemplate =
                 $(go.Node, "Vertical",
                     // the entire node will have a light-blue background
-                    { background: "#ffff00" },
+                    { background: "#4682b4" },
                     // $(go.Picture,
                     //   // Pictures should normally have an explicit width and height.
                     //   // This picture has a red background, only visible when there is no source set
@@ -30,7 +31,7 @@ function resp() {
                     $(go.TextBlock,
                           // the initial value for TextBlock.text
                         // some room around the text, a larger font, and a white stroke:
-                        { margin: 12, stroke: "white", font: "bold 16px sans-serif" },
+                        { margin: 12, stroke: "black", font: "bold 16px sans-serif" },
                         // TextBlock.text is data bound to the "name" attribute of the model data
                         new go.Binding("text", "name"))
                 );
